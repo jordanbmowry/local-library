@@ -17,12 +17,10 @@ function getTotalAccountsCount(accounts) {
 }
 
 function getBooksBorrowedCount(books) {
-  // use native array method reduce()
-  const totalNumberOfBorrowedBooks = books.reduce((acc, curr) => {
-    if (!curr.borrows[0].returned) acc++;
-    return acc;
-  }, 0);
-  return totalNumberOfBorrowedBooks;
+  // use native array method filter()
+  const borrowed = books.filter((book) => book.borrows[0].returned === false);
+  const totalBorrowed = borrowed.length;
+  return totalBorrowed;
 }
 // project employs helper function to support getMostCommonGenres()
 function testIfGenreExistsHelper(genre, genresArray) {
